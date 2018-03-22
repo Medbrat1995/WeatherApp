@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
 
-export default class CityListItem extends Component{
-	render(){
-		
-		return(<ul>
-			<li>id: {this.props.city.id}</li>
-			<li>name: {this.props.city.name}</li>
-			<li>min: {this.props.city.minTemp}</li>
-			<li>max: {this.props.city.maxTemp}</li>
-			</ul>)
-	}
+export default class CityListItem extends Component {
+    render() {
+        const {city} = this.props;
+
+        return (<ul>
+            <li>id: {city.id}</li>
+            <li>name: {city.name}</li>
+            <li>min: {city.minTemp}</li>
+            <li>max: {city.maxTemp}</li>
+        </ul>)
+    }
 }

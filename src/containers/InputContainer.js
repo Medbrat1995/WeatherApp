@@ -1,20 +1,17 @@
-import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import Input from '../components/Input'
+import {changeInput} from '../actions';
+import {queryStringSelector} from '../selectors/input';
 
 const mapStateToProps = (state) => ({
-	string: state.input.queryString
-})
+    string: queryStringSelector(state)
+});
 
-const mapDispatchToProps = (dispatch) => {
-	return{
-		onChangeInput: (str) =>{
-			dispatch(ChangeInput(str))
-		}
-	}
-}
+const mapDispatchToProps = (dispatch) => ({
+    onChangeInput: (str) => dispatch(changeInput(str))
+});
 
-const InputContainer = connect(mapStateToProps, mapDispatchToProps)(Input)
+const InputContainer = connect(mapStateToProps, mapDispatchToProps)(Input);
 export default InputContainer
 
 

@@ -1,4 +1,4 @@
-import {ADD_CITY, DELETE_CITY, REQUEST_FAIL, REQUEST_IN_PROCESS, REQUEST_SUCCESS} from './types';
+import {ADD_CITY, DELETE_CITY, REQUEST_FAIL, REQUEST_IN_PROCESS, REQUEST_SUCCESS, CHANGE_INPUT} from './types';
 
 export const addCity = (city) => ({
     type: ADD_CITY,

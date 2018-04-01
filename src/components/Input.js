@@ -9,12 +9,12 @@ export default class Input extends Component {
 
         const {str} = this.props;
 
-        const onInputChange = (e) => {
+        const inputChange = (e) => {
             e.preventDefault();
             dispatch(changeInput(e.target.value));
         };
 
-        const onSubmit = (e) => {
+        const submit = (e) => {
             e.preventDefault();
             const city = state.input.str;
             dispatch(fetchCity(city));
@@ -22,8 +22,8 @@ export default class Input extends Component {
 
         return (<div>
             <form>
-                <input type='text' placeholder='Введите город' onChange={this.props.onInputChange} />
-                <button type='submit' onClick={this.props.onSubmit} />
+                <input type='text' placeholder='Введите город' onChange={inputChange} />
+                <button type='submit' onClick={submit} />
             </form>
         </div>)
     }

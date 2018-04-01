@@ -7,8 +7,7 @@ const mapStateToProps = (state) => ({
     str: state.input.str
 });
 const mapDispatchToProps = (dispatch) => {
-    return{
-    }
+    return{}
 };
 
 const InputContainer = connect(mapStateToProps, mapDispatchToProps)(Input);

@@ -10,7 +10,6 @@ export const deleteCity = (id) => ({
     id
 });
 
-
 export const requestInProcess = () => ({
     type: REQUEST_IN_PROCESS
 });
@@ -29,9 +28,7 @@ export const changeInput = (str) => ({
     str
 });
 
-
-
-export function fetchCity(str){
+export const fetchCity = (str) => {
     return dispatch => {
         dispatch(requestInProcess());
         return fetch('api.openweathermap.org/data/2.5/weather?q=${str}')
@@ -40,4 +37,4 @@ export function fetchCity(str){
             .then(() => dispatch(receiveSuccess()))
             .catch(error => dispatch(receiveFail(error)))
     }
-}
+};

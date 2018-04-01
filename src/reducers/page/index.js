@@ -1,4 +1,4 @@
-import {addCity, deleteCity} from '../../actions/index'
+import {addCity, deleteCity, requestSuccess, requestFail} from '../../actions/index'
 
 const initialState = {
 			cities: [

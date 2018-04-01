@@ -1,4 +1,4 @@
-import {ADD_CITY, DELETE_CITY, RECEIVE_FAIL, REQUEST_IN_PROCESS, RECEIVE_SUCCESS} from './types';
+import {ADD_CITY, DELETE_CITY, RECEIVE_FAIL, REQUEST_IN_PROCESS, RECEIVE_SUCCESS, CHANGE_INPUT} from './types';
 
 export const addCity = (city) => ({
     type: ADD_CITY,
@@ -24,9 +24,16 @@ export const receiveFail = (error) => ({
     error
 });
 
+export const changeInput = (str) => ({
+    type: CHANGE_INPUT,
+    str
+});
+
+
+
 export function fetchCity(str){
     return dispatch => {
-        dispatch(requestInProcess())
+        dispatch(requestInProcess());
         return fetch('api.openweathermap.org/data/2.5/weather?q=${str}')
             .then(response => response.json())
             .then(json => dispatch(addCity(json)))

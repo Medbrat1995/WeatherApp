@@ -1,21 +1,29 @@
 import React, {Component} from 'react'
-import {fetchCity} from '../actions'
+import {fetchCity, changeInput} from '../actions'
 
 
 export default class Input extends Component {
 
+
     render() {
-        let input
+
+        const {str} = this.props;
+
+        const onInputChange = (e) => {
+            e.preventDefault();
+            dispatch(changeInput(e.target.value));
+        };
+
+        const onSubmit = (e) => {
+            e.preventDefault();
+            const city = state.input.str;
+            dispatch(fetchCity(city));
+        };
+
         return (<div>
-            <form onSubmit = {e => {
-                e.preventDefault();
-                if(!input.value.trim()){
-                    return
-                }
-                fetchCity(input.value)
-            }}>
-                <input type='text' placeholder='Введите город' />
-                <button type='submit' />
+            <form>
+                <input type='text' placeholder='Введите город' onChange={this.props.onInputChange} />
+                <button type='submit' onClick={this.props.onSubmit} />
             </form>
         </div>)
     }

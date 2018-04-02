@@ -1,4 +1,4 @@
-import {ADD_CITY, DELETE_CITY, REQUEST_FAIL, REQUEST_IN_PROCESS, REQUEST_SUCCESS} from './types';
+import {ADD_CITY, DELETE_CITY, RECEIVE_FAIL, REQUEST_IN_PROCESS, RECEIVE_SUCCESS, CHANGE_INPUT} from './types';
 
 export const addCity = (city) => ({
     type: ADD_CITY,
@@ -10,22 +10,31 @@ export const deleteCity = (id) => ({
     id
 });
 
-export const changeInput = (name) => ({
-    type: CHANGE_INPUT,
-    name
+export const requestInProcess = () => ({
+    type: REQUEST_IN_PROCESS
 });
 
-export const requestInProcess = (url) => ({
-    type: REQUEST_IN_PROCESS,
-    url
+export const receiveSuccess = () => ({
+    type: RECEIVE_SUCCESS
 });
 
-export const requestSuccess = (data) => ({
-    type: REQUEST_SUCCESS,
-    data
-});
-
-export const requestFail = (error) => ({
-    type: REQUEST_FAIL,
+export const receiveFail = (error) => ({
+    type: RECEIVE_FAIL,
     error
 });
+
+export const changeInput = (str) => ({
+    type: CHANGE_INPUT,
+    str
+});
+
+export const fetchCity = (str) => {
+    return dispatch => {
+        dispatch(requestInProcess());
+        return fetch('api.openweathermap.org/data/2.5/weather?q=${str}')
+            .then(response => response.json())
+            .then(json => dispatch(addCity(json)))
+            .then(() => dispatch(receiveSuccess()))
+            .catch(error => dispatch(receiveFail(error)))
+    }
+};

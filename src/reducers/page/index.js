@@ -1,4 +1,4 @@
-import {addCity, deleteCity} from '../../actions/index'
+import {addCity, deleteCity, receiveSuccess, receiveFail} from '../../actions/index'
 
 const initialState = {
 			cities: [
@@ -20,7 +20,7 @@ export default function page(state = initialState, action){
 				minTemp: action.city.minTemp,
 				maxTemp: action.city.maxTemp,
 			}]
-		})
+		});
 		default: 
 			return state;
 	}

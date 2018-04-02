@@ -10,6 +10,7 @@ const mapDispatchToProps = (dispatch) => {
     return{
         onInputChange: (e) => {
             e.preventDefault();
+            console.log('onInputChange, current value is ' + e.target.value);
             dispatch(changeInput(e.target.value));
         },
         onSubmitClicked: (e) => {

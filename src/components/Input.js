@@ -11,9 +11,9 @@ export default class Input extends Component {
         const {str} = this.props;
 
         return (<div>
-            <form onSubmit={this.props.onSubmitClicked}>
-                <input type='text' placeholder='Введите город' onChange={this.props.onInputChange} />
-                <button type='submit' />
+            <form onSubmit={this.props.handleSubmit}>
+                <input type='text' placeholder='Введите город' onChange={this.props.handleChange} />
+                <button>Добавить</button>
             </form>
         </div>)
     }

@@ -10,13 +10,12 @@ const mapDispatchToProps = (dispatch) => {
     return{
         handleChange: (e) => {
             e.preventDefault();
-            console.log('onInputChange, current value is ' + e.target.value);
-            dispatch(changeInput(e.target.value));
+            console.log('onInputChange, current value is ' + getState().input.str);
+            dispatch(changeInput(getState().input.str));
         },
         handleSubmit: (e) => {
             e.preventDefault();
-            const city = store.getState().input.str;
-            dispatch(fetchCity(city));
+            dispatch(fetchCity(getState().input.str));
         }
     }
 };

@@ -1,21 +1,33 @@
 import React, {Component} from 'react'
-import {fetchCity, changeInput} from '../actions'
-
 
 
 export default class Input extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            value: ''
+        };
+    }
+
+    handleChange = event => {
+        this.setState({value: event.target.value});
+    };
+
+    handleSubmit = event => {
+        event.preventDefault();
+        this.props.handleSubmit(this.state.value);
+    };
 
     render() {
-
-        const {str} = this.props;
+        const {str} = this.state;
 
         return (<div>
-            <form onSubmit={this.props.handleSubmit}>
-                <input type='text' placeholder='Введите город' onChange={this.props.handleChange} />
+            <form onSubmit={this.handleSubmit}>
+                <input value={str} type='text' placeholder='Введите город' onChange={this.handleChange}/>
                 <button>Добавить</button>
             </form>
         </div>)
     }
-
 }

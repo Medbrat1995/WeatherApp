@@ -28,12 +28,12 @@ export const changeInput = (str) => ({
     str
 });
 
-export const fetchCity = (str) => {
-    return dispatch => {
+export const fetchCity = (city) => {
+    return (dispatch, getState) => {
         dispatch(requestInProcess());
-        return fetch('api.openweathermap.org/data/2.5/weather?q=${str}')
+        return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}`)
             .then(response => response.json())
-            .then(json => dispatch(addCity(json)))
+            .then(json => console.log('[obabichev] json', json) || dispatch(addCity(json)))
             .then(() => dispatch(receiveSuccess()))
             .catch(error => dispatch(receiveFail(error)))
     }

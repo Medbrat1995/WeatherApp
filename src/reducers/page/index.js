@@ -1,4 +1,4 @@
-import {addCity, deleteCity, receiveSuccess, receiveFail} from '../../actions/index'
+import {ADD_CITY, DELETE_CITY} from '../../actions/types';
 
 const initialState = {
 			cities: [
@@ -10,17 +10,21 @@ const initialState = {
 
 export default function page(state = initialState, action){
 	switch(action.type){
-		case 'ADD_CITY':
+		case ADD_CITY:
 		return Object.assign({}, state, {
 			cities: [
 			...state.cities,
 			{
 				name: action.city.name,
 				id: action.city.id,
-				minTemp: action.city.minTemp,
-				maxTemp: action.city.maxTemp,
+				minTemp: action.city.main.temp_min,
+				maxTemp: action.city.main.temp_max,
 			}]
 		});
+		case DELETE_CITY:
+			return Object.assign({}, state, {
+				cities: state.cities.filter(city => city.id != action.id)
+			});
 		default: 
 			return state;
 	}

@@ -31,7 +31,7 @@ export const changeInput = (str) => ({
 export const fetchCity = (city) => {
     return (dispatch, getState) => {
         dispatch(requestInProcess());
-        return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}`)
+        return fetch('http://api.openweathermap.org/data/2.5/weather?q='+city+'&units=metric&APPID=b8b4cec7e0ef27313f5c3aa7808c6c73')
             .then(response => response.json())
             .then(json => console.log('[obabichev] json', json) || dispatch(addCity(json)))
             .then(() => dispatch(receiveSuccess()))

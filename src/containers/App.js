@@ -7,7 +7,6 @@ import CityListContainer from './CityListContainer'
 import InputContainer from './InputContainer'
 import reducer from '../reducers/index';
 
-// const store = createStore(reducer, thunkMiddleware && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const storeCreator = (initialState) => {
     const store = createStore(

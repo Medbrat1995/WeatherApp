@@ -6,13 +6,13 @@ import {createStore, renderDevTools} from '../utils/devTools';
 import CityListContainer from './CityListContainer'
 import InputContainer from './InputContainer'
 import reducer from '../reducers/index';
+import {loadState, saveState} from '../localStorage';
 
-// const store = createStore(reducer, thunkMiddleware && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-
-const storeCreator = (initialState) => {
+export const persistedState = loadState();
+const storeCreator = (persistedState) => {
     const store = createStore(
         reducer,
-        initialState,
+        persistedState,
         compose(
             applyMiddleware(thunk),
             window.devToolsExtension ? window.devToolsExtension() : f => f
@@ -22,6 +22,11 @@ const storeCreator = (initialState) => {
 };
 
 const store = storeCreator();
+store.subscribe(() => {
+    saveState({
+        cities: store.getState().cities
+    });
+});
 
 export default class App extends Component {
     render() {

@@ -8,7 +8,7 @@ import InputContainer from './InputContainer'
 import reducer from '../reducers/index';
 import {loadState, saveState} from '../localStorage';
 
-export const persistedState = loadState();
+export let persistedState = loadState();
 const storeCreator = (persistedState) => {
     const store = createStore(
         reducer,
@@ -23,9 +23,7 @@ const storeCreator = (persistedState) => {
 
 const store = storeCreator(persistedState);
 store.subscribe(() => {
-    saveState({
-        cities: store.getState().cities
-    });
+    saveState(store.getState());
 });
 
 export default class App extends Component {

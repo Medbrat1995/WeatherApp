@@ -2,7 +2,7 @@ export const loadState = () => {
   try{
       const serializedState = localStorage.getItem('state');
       if(serializedState === undefined) {
-          return {cities:[]};
+          return {cities: []};
       }
       return JSON.parse(serializedState);
   }

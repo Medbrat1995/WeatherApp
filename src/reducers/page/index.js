@@ -1,8 +1,10 @@
 import {ADD_CITY, DELETE_CITY} from '../../actions/types';
-import {persistedState} from '../../containers/App';
+import {loadState} from '../../localStorage';
 
+export let persistedState = loadState();
 
 export default function page(state = persistedState, action){
+    console.log(state);
 	switch(action.type){
 		case ADD_CITY:
 		return Object.assign({}, state, {

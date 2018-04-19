@@ -7,8 +7,8 @@ import CityListContainer from './CityListContainer'
 import InputContainer from './InputContainer'
 import reducer from '../reducers/index';
 import {loadState, saveState} from '../localStorage';
+import {persistedState} from '../reducers/page';
 
-export let persistedState = loadState();
 const storeCreator = (persistedState) => {
     const store = createStore(
         reducer,

@@ -21,7 +21,7 @@ const storeCreator = (persistedState) => {
     return store;
 };
 
-const store = storeCreator();
+const store = storeCreator(persistedState);
 store.subscribe(() => {
     saveState({
         cities: store.getState().cities

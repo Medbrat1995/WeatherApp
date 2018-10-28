@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import CityList from '../components/CityList'
-import {addCity, deleteCity} from '../actions';
+import {addCity, deleteCity, updateCity, checkForUpdateCity} from '../actions';
 
 const mapStateToProps = (state) => ({
     cities: state.page.cities
@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         onDeleteCity: (id) => {
             dispatch(deleteCity(id))
+        },
+        onCheckForUpdateCity: (city) => {
+            dispatch(checkForUpdateCity(city))
         }
     }
 };

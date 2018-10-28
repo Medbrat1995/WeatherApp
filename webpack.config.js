@@ -6,6 +6,7 @@ var devFlagPlugin = new webpack.DefinePlugin({
 });
 
 module.exports = {
+  mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
@@ -18,14 +19,18 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
     devFlagPlugin
   ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
-      include: path.join(__dirname, 'src')
+    rules: [{
+      test: /\.jsx?$/,
+      include: path.join(__dirname, 'src'),
+      use: [
+          {loader: 'babel-loader'},
+          ]
     }]
+  },
+  optimization: {
+      noEmitOnErrors: true
   }
 };

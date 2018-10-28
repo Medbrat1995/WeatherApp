@@ -2,8 +2,11 @@ import React, {Component} from 'react'
 
 export default class CityListItem extends Component {
 
+    componentDidMount(){
+        this.props.onCheckForUpdateCity(this.props.city);
+    }
     render() {
-        const {city, onDeleteCity} = this.props;
+        const {city, onDeleteCity, onCheckForUpdateCity} = this.props;
 
         return (<div>
             <p>name: {city.name}</p>

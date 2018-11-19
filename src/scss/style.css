@@ -1,1 +1,8 @@
-$bg-color: pink
+#root{
+    background-color: aqua;
+}
+
+.CityListItem{
+    background-color: #CCCCCC;
+    border: mistyrose 1mm;
+}

@@ -15,6 +15,7 @@ export default function page(state = persistedState, action){
 				id: action.city.id,
 				minTemp: action.city.main.temp_min,
 				maxTemp: action.city.main.temp_max,
+                temp: action.city.main.temp,
 				lastUpdated: action.lastUpdated
 			}]
 		});

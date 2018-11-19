@@ -1,0 +1,29 @@
+body{
+    background-color: orange;
+    font: 100 16px Oswald, Arial, sans-serif;
+}
+
+.CityListItem{
+    display: inline-block;
+    margin-right: 1cm;
+    margin-bottom: 1cm;
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    border: black 1px solid;
+    border-radius: 4mm;
+}
+
+p{
+    padding-left: 1mm;
+}
+
+button{
+    margin: 2mm 2mm 2mm 2mm;
+    background-color: orange;
+    text-align: center;
+    width: 100px;
+    height: 20px;
+    border: black 1px solid;
+    border-radius: 4mm;
+}
